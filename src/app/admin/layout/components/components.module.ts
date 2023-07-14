@@ -6,7 +6,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
-
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    MatListModule
   ],
   exports:[
     HeaderComponent,
