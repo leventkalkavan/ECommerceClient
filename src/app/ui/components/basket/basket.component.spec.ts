@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SiderbarComponent } from './siderbar.component';
+import { BasketComponent } from './basket.component';
 
-describe('SiderbarComponent', () => {
-  let component: SiderbarComponent;
-  let fixture: ComponentFixture<SiderbarComponent>;
+describe('BasketComponent', () => {
+  let component: BasketComponent;
+  let fixture: ComponentFixture<BasketComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SiderbarComponent]
+      declarations: [BasketComponent]
     });
-    fixture = TestBed.createComponent(SiderbarComponent);
+    fixture = TestBed.createComponent(BasketComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
