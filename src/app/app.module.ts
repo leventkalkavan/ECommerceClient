@@ -7,6 +7,7 @@ import { LayoutModule } from "./admin/layout/layout.module";
 import { AdminModule } from './admin/admin.module';
 import { UiModule } from './ui/ui.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         BrowserModule,
         AppRoutingModule,
         LayoutModule,
-        AdminModule,UiModule, BrowserAnimationsModule
+        AdminModule,UiModule,BrowserAnimationsModule,
+        ToastrModule.forRoot()
     ]
 })
 export class AppModule { }
