@@ -9,6 +9,6 @@ import { AlertifyService, MessageType } from 'src/app/services/admin/alertify.se
 export class LayoutComponent implements OnInit {
   constructor(private alertify:AlertifyService){}
   ngOnInit(): void {
-    this.alertify.message("aeffe", MessageType.Success);
+    // this.alertify.message("aeffe", MessageType.Success);
   }
 }
