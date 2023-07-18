@@ -17,9 +17,9 @@ export class ProductsComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.showSpinner(SpinnerType.BallScaleMuliple);
     
-    this.httpClientService.get({
-      controller: "products"
-    }).subscribe(data=>console.log(data));
+    // this.httpClientService.get({
+    //   controller: "products"
+    // }).subscribe(data=>console.log(data));
 
 
     //  this.httpClientService.post({
@@ -40,9 +40,9 @@ export class ProductsComponent extends BaseComponent implements OnInit {
     // }
     // ).subscribe();
 
-    this.httpClientService.delete({
-      controller:"products",
-    },"a61314ab-7c2b-4f32-0743-08db86c97fa8").subscribe();
+    // this.httpClientService.delete({
+    //   controller:"products",
+    // },"a61314ab-7c2b-4f32-0743-08db86c97fa8").subscribe();
   }
 
 }
