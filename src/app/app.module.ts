@@ -10,8 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BaseComponent } from './base/base.component';
 import { HttpClientModule } from '@angular/common/http';
-//import { DeleteDirective } from './directives/admin/delete.directive';
-
+import { DeleteDialogComponent } from './dialog/delete-dialog/delete-dialog.component';
 @NgModule({
   declarations: [
     AppComponent
@@ -26,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    { provide: "baseUrl", useValue: "https://localhost:7131/api", multi: true }
+    { provide: "baseUrl", useValue: "https://localhost:7292/api", multi: true }
   ],
   bootstrap: [AppComponent]
 })
