@@ -22,13 +22,6 @@ export class CreateComponent extends BaseComponent implements OnInit {
   }
 
   @Output() createdProduct: EventEmitter<Create_Product> = new EventEmitter();
-  @Output() fileUploadOptions: Partial<FileUploadOptions> = {
-    action: "upload",
-    controller: "products",
-    explanation: "Resimleri sürükleyin veya seçin...",
-    isAdminPage: true,
-    accept:".png, .jpg, .jpeg, .json"
-  };
 
   create(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement) {
     this.showSpinner(SpinnerType.BallAtom);
@@ -46,12 +39,3 @@ export class CreateComponent extends BaseComponent implements OnInit {
     });
   }
 }
-    // if (!name.value) {
-    //   this.alertify.message("Lütfen ürün adını giriniz!",MessageType.Error);
-    //   return;
-    // }
-
-    // if (parseInt(stock.value) < 0) {
-    //   this.alertify.message("Stok bilgisini doğru giriniz.",MessageType.Error);
-    //   return;
-    // }

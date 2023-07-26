@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FileSystemDirectoryEntry, FileSystemFileEntry, NgxFileDropEntry } from 'ngx-file-drop';
 import { AlertifyService, MessageType,} from '../../admin/alertify.service';
-import { HttpClientService } from 'src/app/service/common/http-client.service';
+import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { CustomToasterService, ToastrMessageType } from '../../ui/custom-toaster.service';
 
 @Component({

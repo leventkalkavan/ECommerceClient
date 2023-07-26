@@ -1,12 +1,12 @@
 import { EventEmitter } from '@angular/core';
 import { Directive, ElementRef, HostListener, Input, Output, Renderer2 } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { SpinnerType } from '../../base.component';
+import { SpinnerType } from '../../../base/base.component';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogComponent, DeleteState } from 'src/app/dialog/delete-dialog/delete-dialog.component';
-import { HttpClientService } from 'src/app/service/common/http-client.service';
+import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { AlertifyService, MessageType } from 'src/app/services/admin/alertify.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DeleteDialogComponent, DeleteState } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
 
 declare var $: any;
 
