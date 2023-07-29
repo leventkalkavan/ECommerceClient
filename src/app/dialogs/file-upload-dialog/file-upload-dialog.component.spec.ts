@@ -6,10 +6,14 @@ describe('FileUploadDialogComponent', () => {
   let component: FileUploadDialogComponent;
   let fixture: ComponentFixture<FileUploadDialogComponent>;
 
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ FileUploadDialogComponent ]
+    })
+    .compileComponents();
+  });
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [FileUploadDialogComponent]
-    });
     fixture = TestBed.createComponent(FileUploadDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

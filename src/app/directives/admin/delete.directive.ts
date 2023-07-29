@@ -1,7 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { Directive, ElementRef, HostListener, Input, Output, Renderer2 } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { SpinnerType } from '../../../base/base.component';
+import { SpinnerType } from '../../base/base.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { AlertifyService, MessageType } from 'src/app/services/admin/alertify.service';
