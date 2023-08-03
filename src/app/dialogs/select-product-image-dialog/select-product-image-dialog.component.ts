@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { async } from 'rxjs';
 import { SpinnerType } from '../../base/base.component';
-import { List_Product_Image } from '../../contracts/list_product_image';
+import { List_Product_Image } from '../../contracts/products/list_product_image';
 import { DialogService } from '../../services/common/dialog.service';
 import { FileUploadOptions } from '../../services/common/file-upload/file-upload.component';
 import { ProductService } from '../../services/common/models/product.service';

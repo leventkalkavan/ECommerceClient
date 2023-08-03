@@ -3,7 +3,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { ListComponent } from './list/list.component';
-import { Create_Product } from 'src/app/contracts/create_product';
+import { Create_Product } from 'src/app/contracts/products/create_product';
 
 @Component({
   selector: 'app-products',

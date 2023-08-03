@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
-import { Create_Product } from '../../../contracts/create_product';
-import { List_Product } from '../../../contracts/list_product';
-import { List_Product_Image } from '../../../contracts/list_product_image';
+import { Create_Product } from '../../../contracts/products/create_product';
+import { List_Product } from '../../../contracts/products/list_product';
+import { List_Product_Image } from '../../../contracts/products/list_product_image';
 import { HttpClientService } from '../http-client.service';
 
 @Injectable({

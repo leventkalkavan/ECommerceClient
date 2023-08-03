@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent } from 'src/app/base/base.component';
-import { Create_User } from 'src/app/contracts/create_user';
+import { Create_User } from 'src/app/contracts/users/create_user';
 import { User } from 'src/app/entites/user';
 import { AlertifyService, MessageType } from 'src/app/services/admin/alertify.service';
 import { UserService } from 'src/app/services/common/models/user.service';
