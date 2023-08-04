@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { CustomToasterService, ToastrMessageType } from './services/ui/custom-toaster.service';
+import { AuthService } from './services/common/auth.service';
+import { Router } from '@angular/router';
+import { AlertifyService, MessageType } from './services/admin/alertify.service';
 declare var $:any
 @Component({
   selector: 'app-root',
@@ -8,9 +11,14 @@ declare var $:any
 })
 
 export class AppComponent {
-  title = 'ECommerceClient';
-  constructor(private toastrService: CustomToasterService) {
-    // toastrService.message("-bir dost", "Selam sana",ToastrMessageType.Info);
+  constructor(public authService: AuthService, private toastrService: CustomToasterService, private router: Router, private alertify: AlertifyService) {
+    authService.identityCheck();
   }
-    
-}
+
+  signOut() {
+    localStorage.removeItem("accessToken");
+    this.authService.identityCheck();
+    this.router.navigate([""]);
+    this.alertify.message("Oturum Kapatıldı",MessageType.Error)
+    };
+  }

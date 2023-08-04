@@ -28,6 +28,7 @@ export class UserService {
 
     if (tokenResponse) {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      this.alertify.message("Kullanici girisi saglanmistir.", MessageType.Success);
     }
     callBackFunction();
   }
