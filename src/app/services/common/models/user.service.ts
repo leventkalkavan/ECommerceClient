@@ -5,6 +5,7 @@ import { User } from 'src/app/entites/user';
 import { Create_User } from 'src/app/contracts/users/create_user';
 import { AlertifyService, MessageType } from '../../admin/alertify.service';
 import { TokenResponse } from 'src/app/contracts/token/tokenResponse';
+import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class UserService {
 
     return await firstValueFrom(observable) as Create_User;
   }
+
   async login(userNameOrEmail: string, password: string, callBackFunction?: () => void): Promise<any> {
     const observable: Observable<any | TokenResponse> = this.httpClientService.post<any | TokenResponse>({
       controller: "users",
@@ -30,6 +32,23 @@ export class UserService {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
       this.alertify.message("Kullanici girisi saglanmistir.", MessageType.Success);
     }
+    callBackFunction();
+  }
+
+  async googleLogin(user: SocialUser, callBackFunction?: () => void): Promise<any> {
+    const observable: Observable<SocialUser | TokenResponse> = this.httpClientService.post<SocialUser | TokenResponse>({
+      action: "google-login",
+      controller: "users"
+    }, user);
+
+    const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
+
+    if (tokenResponse) {
+      localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+
+      this.alertify.message("Google uzerinden kullanici girisi saglanmistir.", MessageType.Success);
+    }
+
     callBackFunction();
   }
 }

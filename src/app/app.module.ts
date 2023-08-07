@@ -10,13 +10,18 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { LoginComponent } from './ui/components/login/login.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    GoogleSigninButtonModule,
+    SocialLoginModule,
     AppRoutingModule,
     AdminModule, UiModule,
     ToastrModule.forRoot(),
@@ -27,10 +32,24 @@ import { JwtModule } from '@auth0/angular-jwt';
         tokenGetter: () => localStorage.getItem("accessToken"),
       allowedDomains: ["localhost:7292"]
     }
-    })
+    }),
+    SocialLoginModule
   ],
   providers: [
-    { provide: "baseUrl", useValue: "https://localhost:7292/api", multi: true }
+    { provide: "baseUrl", useValue: "https://localhost:7292/api", multi: true },
+    {
+      provide: "SocialAuthServiceConfig",
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider("434898939699-afe87t9d0mn37hnlmca7vs9dobad5rf2.apps.googleusercontent.com")
+          }
+        ],
+        onError: err => console.log(err)
+      } as SocialAuthServiceConfig
+    }
   ],
   bootstrap: [AppComponent]
 })
