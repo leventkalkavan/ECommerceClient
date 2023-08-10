@@ -1,17 +1,19 @@
+import { SocialUser } from '@abacritt/angularx-social-login';
 import { Injectable } from '@angular/core';
+import { Toast } from 'ngx-toastr';
 import { firstValueFrom, Observable } from 'rxjs';
+import { Token } from '../../../contracts/token/token';
+import { TokenResponse } from '../../../contracts/token/tokenResponse';
+import { Create_User } from '../../../contracts/users/create_user';
 import { HttpClientService } from '../http-client.service';
 import { User } from 'src/app/entites/user';
-import { Create_User } from 'src/app/contracts/users/create_user';
-import { AlertifyService, MessageType } from '../../admin/alertify.service';
-import { TokenResponse } from 'src/app/contracts/token/tokenResponse';
-import { SocialUser } from '@abacritt/angularx-social-login';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui/custom-toaster.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private httpClientService: HttpClientService, private alertify: AlertifyService) { }
+  constructor(private httpClientService: HttpClientService, private toastrService: CustomToastrService) { }
 
   async create(user: User): Promise<Create_User> {
     const observable: Observable<Create_User | User> = this.httpClientService.post<Create_User | User>({
@@ -26,12 +28,18 @@ export class UserService {
       controller: "users",
       action: "login"
     }, { userNameOrEmail, password })
+
     const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
 
     if (tokenResponse) {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
-      this.alertify.message("Kullanici girisi saglanmistir.", MessageType.Success);
+
+      this.toastrService.message("Kullanıcı girişi başarıyla sağlanmıştır.", "Giriş Başarılı", {
+        messageType: ToastrMessageType.Success,
+        position: ToastrPosition.TopRight
+      })
     }
+
     callBackFunction();
   }
 
@@ -46,7 +54,30 @@ export class UserService {
     if (tokenResponse) {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
 
-      this.alertify.message("Google uzerinden kullanici girisi saglanmistir.", MessageType.Success);
+      this.toastrService.message("Google üzerinden giriş başarıyla sağlanmıştır.", "Giriş Başarılı", {
+        messageType: ToastrMessageType.Success,
+        position: ToastrPosition.TopRight
+      });
+    }
+
+    callBackFunction();
+  }
+
+  async facebookLogin(user: SocialUser, callBackFunction?: () => void): Promise<any> {
+    const observable: Observable<SocialUser | TokenResponse> = this.httpClientService.post<SocialUser | TokenResponse>({
+      controller: "users",
+      action: "facebook-login"
+    }, user);
+
+    const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
+
+    if (tokenResponse) {
+      localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+
+      this.toastrService.message("Facebook üzerinden giriş başarıyla sağlanmıştır.", "Giriş Başarılı", {
+        messageType: ToastrMessageType.Success,
+        position: ToastrPosition.TopRight
+      })
     }
 
     callBackFunction();

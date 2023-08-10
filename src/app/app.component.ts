@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CustomToasterService, ToastrMessageType } from './services/ui/custom-toaster.service';
+import {CustomToastrService, ToastrMessageType } from './services/ui/custom-toaster.service';
 import { AuthService } from './services/common/auth.service';
 import { Router } from '@angular/router';
 import { AlertifyService, MessageType } from './services/admin/alertify.service';
@@ -11,7 +11,7 @@ declare var $:any
 })
 
 export class AppComponent {
-  constructor(public authService: AuthService, private toastrService: CustomToasterService, private router: Router, private alertify: AlertifyService) {
+  constructor(public authService: AuthService, private toastrService: CustomToastrService, private router: Router, private alertify: AlertifyService) {
     authService.identityCheck();
   }
 

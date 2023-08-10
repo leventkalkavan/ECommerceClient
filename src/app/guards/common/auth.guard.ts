@@ -3,16 +3,16 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SpinnerType } from '../../base/base.component';
-import { CustomToasterService, ToastrMessageType } from 'src/app/services/ui/custom-toaster.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AlertifyService, MessageType } from 'src/app/services/admin/alertify.service';
+import { CustomToastrService } from 'src/app/services/ui/custom-toaster.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private jwtHelper: JwtHelperService, private router: Router, private toastrService: CustomToasterService, private spinner: NgxSpinnerService, private alertify: AlertifyService) {
+  constructor(private jwtHelper: JwtHelperService, private router: Router, private toastrService: CustomToastrService, private spinner: NgxSpinnerService, private alertify: AlertifyService) {
 
   }
 
